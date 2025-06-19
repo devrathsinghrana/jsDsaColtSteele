@@ -1,0 +1,7 @@
+read username
+echo "$username 1"
+echo '$username 2'
+echo $username 3
+echo "Hello world!"
+
+echo "$1 $2"
