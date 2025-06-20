@@ -1,0 +1,5 @@
+for f in $(cat readfiles)
+do
+echo "Processing file: $f"
+cat $f
+done

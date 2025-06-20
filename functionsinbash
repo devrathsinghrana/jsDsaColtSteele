@@ -1,0 +1,13 @@
+function greetUserAndCreateFile(){
+    echo "Greeting user now"
+    sleep 2
+    echo "Hello, $1! Welcome to the system."
+    sleep 2
+    echo "Creating a file ./greeting"
+    sleep 1
+    touch ./greeting
+    echo "File created successfully."
+    return 200000
+}
+
+greetUserAndCreateFile "Alice"
