@@ -10,7 +10,7 @@ const isAlphaNumeric = (char) => {
   // return /^[a-z0-9]+$/i.test(char); // checks if the character is alphanumeric
 
   if (
-    !(char.CharCodeAt(0) >= 48 && char.charCodeAt(0) <= 57) && // 0-9
+    !(char.charCodeAt(0) >= 48 && char.charCodeAt(0) <= 57) && // 0-9
     !(char.charCodeAt(0) >= 65 && char.charCodeAt(0) <= 90) && // A-Z
     !(char.charCodeAt(0) >= 97 && char.charCodeAt(0) <= 122) // a-z
   ) {
@@ -33,5 +33,4 @@ const countCharactersInString = (str) => {
 // Space complexity: O(k)
 // Explanation: We use an object to store the count of each character, where k is the number of unique characters in the string. char is ignored as it is a constant space operation always having one character at a time so it is a string with length always 1 no matter the input
 
-console.log(countCharactersInString("Hello World! 123")); // { h: 1, e: 1, l: 3, o: 2, w: 1, r: 1, d: 1, ' ': 2, '1': 1, '2': 1, '3': 1 }
-console.log(); // { j: 1, a: 2, v: 1, s: 2, c: 1, r: 1, i: 1, p: 1, t: 1, ' ': 2, e: 1, w: 1, o: 1, m: 1 };
+console.log(countCharactersInString("Hello World! 123")); // { '1': 1, '2': 1, '3': 1, h: 1, e: 1, l: 3, o: 2, w: 1, r: 1, d: 1 }
