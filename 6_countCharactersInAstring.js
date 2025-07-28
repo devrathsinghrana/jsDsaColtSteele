@@ -33,6 +33,5 @@ const countCharactersInString = (str) => {
 // Space complexity: O(k)
 // Explanation: We use an object to store the count of each character, where k is the number of unique characters in the string. char is ignored as it is a constant space operation always having one character at a time so it is a string with length always 1 no matter the input
 
-
-countCharactersInString("Hello World! 123"); // { h: 1, e: 1, l: 3, o: 2, w: 1, r: 1, d: 1, ' ': 2, '1': 1, '2': 1, '3': 1 }
-countCharactersInString("JavaScript is awesome!"); // { j: 1, a: 2, v: 1, s: 2, c: 1, r: 1, i: 1, p: 1, t: 1, ' ': 2, e: 1, w: 1, o: 1, m: 1 };
+console.log(countCharactersInString("Hello World! 123")); // { h: 1, e: 1, l: 3, o: 2, w: 1, r: 1, d: 1, ' ': 2, '1': 1, '2': 1, '3': 1 }
+console.log(); // { j: 1, a: 2, v: 1, s: 2, c: 1, r: 1, i: 1, p: 1, t: 1, ' ': 2, e: 1, w: 1, o: 1, m: 1 };
