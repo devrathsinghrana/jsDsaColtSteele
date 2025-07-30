@@ -12,6 +12,7 @@
     "ts:run": "ts-node",
     "ts:dev": "ts-node --watch",
     "ts:exec": "ts-node src/index.ts",
+    "ts:file": "node run-ts.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

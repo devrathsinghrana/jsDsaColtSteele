@@ -109,3 +109,6 @@ temp/
 file1
 file2
 file3
+
+# Utility scripts (uncomment if you want to ignore them)
+# run-ts.js
