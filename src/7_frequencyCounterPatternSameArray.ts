@@ -1,0 +1,42 @@
+/*
+Problem statement
+We have two arrays of positive integers
+[1,2,3] [1,9,4]
+
+We want to check if the two arrays have the same frequency of elements and if the second array is a perfect square of the first array.
+For example, the first array has 1, 2, and 3, and the second array has 1, 9, and 4.
+If we square each element of the first array, we get 1, 4, and 9, which matches the second array.
+Irrespective of the order of elements, we want to check if the two arrays have the same frequency of elements.
+*/
+
+// Method 1 - Brute Force
+
+type CheckForSameFrequency = (a: number[], b: number[]) => boolean;
+const checkForSameFrequencyOfSquaredElementsBruteForceWay: CheckForSameFrequency =
+  (inpArrOne, inpArrTwo) => {
+    // we will check if size of two arrays are same else return false
+    if (inpArrOne.length !== inpArrTwo.length) return false;
+    // if size of two arrays arrays are same
+    //first we will loop over first array using it's index
+    for (let i: number = 0; i < inpArrOne.length; i++) {
+      //Then we will search for each element squared value in second array and return the index of that element in second array
+
+      if (inpArrOne[i] <= 0 || inpArrTwo.indexOf(inpArrOne[i] ** 2) === -1) {
+        // if element is not found or first array element is not positive integer then we will terminate the function execution using return keyword
+        return false;
+      }
+      // Now using this returned index we will remove that element from second array so that we can accurately identify if the frequency or count of occurence of particular element in first array is same
+
+      inpArrTwo.splice(inpArrTwo.indexOf(inpArrOne[i] ** 2), 1);
+    }
+    return true;
+  };
+console.log(
+  checkForSameFrequencyOfSquaredElementsBruteForceWay([1, 2, 3], [1, 9, 4, 5])
+);
+console.log(
+  checkForSameFrequencyOfSquaredElementsBruteForceWay([1, 2, 3], [1, 9, 4])
+);
+console.log(
+  checkForSameFrequencyOfSquaredElementsBruteForceWay([1, 2, 3], [1, 1, -1])
+);
