@@ -25,7 +25,7 @@ const checkForSameFrequencyOfSquaredElementsBruteForceWay: CheckForSameFrequency
         // if element is not found or first array element is not positive integer then we will terminate the function execution using return keyword
         return false;
       }
-      // Now using this returned index we will remove that element from second array so that we can accurately identify if the frequency or count of occurence of particular element in first array is same
+      // Now using this returned index we will remove that element from second array so that we can accurately identify if the frequency or count of occurrence of particular element in first array is same
 
       inpArrTwo.splice(inpArrTwo.indexOf(inpArrOne[i] ** 2), 1);
     }
@@ -39,4 +39,55 @@ console.log(
 );
 console.log(
   checkForSameFrequencyOfSquaredElementsBruteForceWay([1, 2, 3], [1, 1, -1])
+);
+// Time Complexity is O(n^2) as we are looping first array then inside for we have used indexOf which again has complexity of O(n)
+// Space complexity is O(1) as only one variable i of number type is created
+
+// Method 2 - Using Frequency Counter Pattern
+// In frequency counter pattern we will create two objects to store the frequency of elements in both arrays
+/*
+[1, 2, 3], [1, 9, 4]
+{1:1,2:1,3:1},{1:1,9:1,4:1}
+
+So what is the benefit of using frequency counter pattern?
+First benefit is we prevent nesting of loops as we have separate for loop for both arrays when preparing these frequency objects.
+Second benefit is we can easily check if the frequency of elements in both arrays are same by comparing the two objects.
+And also if properties of object2 is squared of property of object1. Which easily achieves our objective
+*/
+
+const checkForSameFrequencyOfSquaredElementsFrequencyPattern: CheckForSameFrequency =
+  (inpArrOne, inpArrTwo) => {
+    if (inpArrOne.length !== inpArrTwo.length) return false;
+    // convert first array in object containing its frequency
+
+    const frequencyObjectOne: Record<number, number> = {};
+    for (const curr of inpArrOne) {
+      if (curr <= 0) return false;
+      frequencyObjectOne[curr] = (frequencyObjectOne[curr] || 0) + 1;
+    }
+
+    const frequencyObjectTwo: Record<number, number> = {};
+    for (const curr of inpArrTwo) {
+      if (curr <= 0) return false;
+      frequencyObjectTwo[curr] = (frequencyObjectTwo[curr] || 0) + 1;
+    }
+
+    for (const key in frequencyObjectOne) {
+      const keyNum = Number(key);
+      const squaredKey = keyNum ** 2;
+      if (!frequencyObjectTwo.hasOwnProperty(squaredKey)) return false;
+      if (frequencyObjectOne[keyNum] !== frequencyObjectTwo[squaredKey])
+        return false;
+    }
+    return true;
+  };
+
+  console.log(
+  checkForSameFrequencyOfSquaredElementsFrequencyPattern([1, 2, 3], [1, 9, 4, 5])
+);
+console.log(
+  checkForSameFrequencyOfSquaredElementsFrequencyPattern([1, 2, 3], [1, 9, 4])
+);
+console.log(
+  checkForSameFrequencyOfSquaredElementsFrequencyPattern([1, 2, 3], [1, 1, -1])
 );
